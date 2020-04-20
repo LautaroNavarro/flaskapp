@@ -7,3 +7,14 @@ before_install:
 
 script:
   - docker run lautaronavarro/flaskapp pytest
+
+deploy:
+  provider: elasticbeanstalk
+  app: flaskapp
+  env: Flaskapp-env
+  bucket_name: "elasticbeanstalk-us-east-2-553804590366"
+  region: "us-east-2"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
